@@ -50,9 +50,8 @@ def item_id(entityName, text, cursor):
     SQL = 'SELECT hashid FROM ' + tableName + ' WHERE hashID = %s'
     if (DEBUG_ITEMID == True): print("DEBUG ITEMID: " + SQL)
     cursor.execute(SQL, (hashid))
-    row = cursor.fetchone()
     
-    if row:
+    if row := cursor.fetchone():
         if (DEBUG_ITEMID == True): print("DEBUG ITEMID: item found, just return hashid:",row["hashid"], " for ", text )
         return row["hashid"]
         
@@ -129,9 +128,8 @@ def get_association(word_id,sentence_id, cursor):
     SQL = 'SELECT weight FROM associations WHERE word_id =%s AND sentence_id =%s'
     if (DEBUG_ASSOC == True): print("DEBUG_ASSOC:", SQL,word_id, sentence_id)
     cursor.execute(SQL, (word_id,sentence_id))
-    row = cursor.fetchone()
     
-    if row:
+    if row := cursor.fetchone():
         weight = row["weight"]
     else:
         weight = 0
@@ -175,8 +173,7 @@ def get_matches(words, cursor):
     
     # Fetch an ordered "listSize" number of results
     for i in range(0,listSize):
-        row = cursor.fetchone()
-        if row:
+        if row := cursor.fetchone():
             results.append([row["sentence_id"], row["sentence"], row["sum_weight"]])
             if (DEBUG_MATCH == True): print("**",[row["sentence_id"], row["sentence"], row["sum_weight"]],"\n")
             

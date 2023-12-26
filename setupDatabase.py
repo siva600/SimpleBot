@@ -19,9 +19,8 @@ def try_drop(cursor,table_name):
 
 print("Configuring Tables for database configuration: \n \tServer: {0} \n \tDB-User: {1} \n \tDB-Name: {2}".format(DBHOST,DBUSER, DBNAME))
 
-response = utils.query_yes_no("Continue?")
 
-if response:
+if response := utils.query_yes_no("Continue?"):
     
 ## Tab Config and Make Connection to Database ##
     

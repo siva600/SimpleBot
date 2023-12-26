@@ -50,8 +50,7 @@ with open(loadfile,'rt', encoding = 'utf8') as f:
     reader = csv.reader(f, skipinitialspace=True)
     for row in reader:
         #first line = col names
-        i = i + 1
-        if i == 1:
+        if (i := i + 1) == 1:
             #cols = ",".join(row)
             cols = row
         else:
