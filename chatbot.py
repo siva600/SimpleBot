@@ -92,7 +92,7 @@ def set_association(words, sentence_id, cursor):
     which is just the existing association weight (passed back by get_association) and the new weight
     """
 
-    words_length = sum([n * len(word) for word, n in words]) # int giving number of chars in words
+    words_length = sum(n * len(word) for word, n in words) # int giving number of chars in words
     
     # Looping through Bot-Words, associating them with Human Sentence
     for word, n in words:                 
@@ -150,7 +150,7 @@ def get_matches(words, cursor):
     cursor.execute('DELETE FROM results WHERE connection_id = connection_id()')
     
     # calc "words_length" for weighting calc
-    words_length = sum([n * len(word) for word, n in words])  
+    words_length = sum(n * len(word) for word, n in words)  
     
     if (DEBUG_MATCH == True): print("DEBUG_MATCH: words list", words, " words_length:", words_length )
     
