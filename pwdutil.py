@@ -1,6 +1,7 @@
 import base64
 import argparse
 import pickle
+import fickling
 
 """ 
   Trivial Password Obsfucation Utility
@@ -43,7 +44,7 @@ def store_pwd(encoded):
     pickle.dump( encoded, open( PWD_FILE, "wb" ) )
         
 def get_pwd():
-    encoded = pickle.load( open( PWD_FILE, "rb" ) )
+    encoded = fickling.load( open( PWD_FILE, "rb" ) )
     return(encoded)
    
     
